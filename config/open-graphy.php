@@ -3,11 +3,13 @@
 // config for SaaSykit/OpenGraphy
 return [
     'chrome_binary' => env('CHROME_BINARY', 'chromium'), // leave empty for set to the path of the chrome binary to use, or "chromium" to use the chromium binary
-    'image' => [  // final generated open graph image settings
+    'open_graph_image' => [  // final generated open graph image settings
         'width' => 1200,
         'height' => 630,
         'type' => 'png',  // png or jpg
     ],
+
+    'image' => null,  // path (relative to public directory) or url to the image to be added to the open graph image
 
     'logo' => [
         'enabled' => false, // set to false to disable the logo

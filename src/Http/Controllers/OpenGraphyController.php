@@ -4,12 +4,12 @@ namespace SaaSykit\OpenGraphy\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use SaaSykit\OpenGraphy\OpenGraphImageGenerator;
+use SaaSykit\OpenGraphy\ImageGenerator;
 
 class OpenGraphyController
 {
     public function __construct(
-        private OpenGraphImageGenerator $openGraphImageGenerator
+        private ImageGenerator $imageGenerator
     ) {
 
     }
@@ -30,8 +30,9 @@ class OpenGraphyController
         $logo = $request->boolean('logo', config('open-graphy.logo.enabled'));
         $screenshot = $request->boolean('screenshot', config('open-graphy.screenshot.enabled'));
         $template = $request->get('template', config('open-graphy.template'));
+        $image = $request->get('image');
 
-        $fileExtension = config('open-graphy.image.type');
+        $fileExtension = config('open-graphy.open_graph_image.type');
 
         // hash all the inputs to create a unique filename
         $filename = md5($title.$logo.$screenshot.$url.$template);
@@ -47,7 +48,7 @@ class OpenGraphyController
         $filePath = $path.'/'.$filename.'.'.$fileExtension;
 
         if (! Storage::disk($disk)->exists($filePath)) {
-            $screenshot = $this->openGraphImageGenerator->render($title, $url, $logo, $screenshot, $template);
+            $screenshot = $this->imageGenerator->render($title, $url, $logo, $screenshot, $image, $template);
 
             Storage::disk($disk)->put($filePath, $screenshot);
         }

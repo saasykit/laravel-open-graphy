@@ -195,7 +195,7 @@
             @if (isset($logo))
                 <img class="logo" src="{{ $logo }}" alt="Logo">
             @endif
-            <h1 class="headline">Laravel: <br>How to pick the best Boilerplate? Choose wisely...</h1>
+            <h1 class="headline">{!! $title !!}</h1>
 
         </div>
 
