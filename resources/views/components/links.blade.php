@@ -1,6 +1,6 @@
 @if (isset($attributes['title']) && !empty($attributes['title']))
 
-    @php($attributes['url'] = $attributes['url'] ?? url()->current());
+    @php($attributes['url'] = $attributes['url'] ?? url()->current())
 
     <meta property="og:image" content="{!! openGraphy($attributes) !!}">
     <meta property="og:image:type" content="image/{{ config('open-graphy.image.type') }}">
