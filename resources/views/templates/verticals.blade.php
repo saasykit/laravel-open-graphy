@@ -31,6 +31,7 @@ SVG;
 
         .headline {
             color: {{ $textColor }};
+            text-shadow: none;
         }
     </style>
 
