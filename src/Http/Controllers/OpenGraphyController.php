@@ -35,7 +35,7 @@ class OpenGraphyController
         $fileExtension = config('open-graphy.open_graph_image.type');
 
         // hash all the inputs to create a unique filename
-        $filename = md5($title.$logo.$screenshot.$url.$template);
+        $filename = md5($title.$logo.$screenshot.$url.$image.$template);
 
         // storage path
         $disk = config('open-graphy.storage.disk');

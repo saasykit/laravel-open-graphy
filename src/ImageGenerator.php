@@ -94,10 +94,14 @@ class ImageGenerator
         return public_path($path);
     }
 
-    private function getInlineBase64Representation(string $path)
+    private function getInlineBase64Representation(string $path): ?string
     {
-        $mimeType = mime_content_type($path);
+        try {
+            $mimeType = mime_content_type($path);
 
-        return 'data:'.$mimeType.';base64, '.base64_encode(file_get_contents($path));
+            return 'data:'.$mimeType.';base64, '.base64_encode(file_get_contents($path));
+        } catch (\Throwable $e) {
+            return null;
+        }
     }
 }
