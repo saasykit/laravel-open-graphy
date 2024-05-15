@@ -13,6 +13,7 @@ class OpenGraphyController
     ) {
 
     }
+
     public function openGraphImage(Request $request)
     {
         if (! $request->hasValidSignature()) {
