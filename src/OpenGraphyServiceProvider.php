@@ -17,7 +17,7 @@ class OpenGraphyServiceProvider extends PackageServiceProvider
          * More info: https://github.com/spatie/laravel-package-tools
          */
         $package
-            ->name('laravel-open-graphy')
+            ->name('open-graphy')
             ->hasConfigFile()
             ->hasViews()
             ->hasRoute('web')
