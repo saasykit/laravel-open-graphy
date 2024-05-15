@@ -19,7 +19,7 @@ class OpenGraphImageGenerator
         $logoImage = public_path().'/'.config('open-graphy.logo.location');
         $logoMimeType = mime_content_type($logoImage);
 
-        $viewName = 'open-graphy::'.$template;
+        $viewName = 'open-graphy::templates.'.$template;
         $templateSettings = config('open-graphy.template_settings.'.$template, []);
 
         $data = [
