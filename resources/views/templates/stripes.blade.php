@@ -15,41 +15,41 @@
             $endColor = str_replace('#', '', $endColor);
 
             $startRGB = [
-            hexdec(substr($startColor, 0, 2)),
-            hexdec(substr($startColor, 2, 2)),
-            hexdec(substr($startColor, 4, 2))
+                hexdec(substr($startColor, 0, 2)),
+                hexdec(substr($startColor, 2, 2)),
+                hexdec(substr($startColor, 4, 2))
             ];
 
             $endRGB = [
-            hexdec(substr($endColor, 0, 2)),
-            hexdec(substr($endColor, 2, 2)),
-            hexdec(substr($endColor, 4, 2))
+                hexdec(substr($endColor, 0, 2)),
+                hexdec(substr($endColor, 2, 2)),
+                hexdec(substr($endColor, 4, 2))
             ];
 
             $stepRGB = [
-            ($endRGB[0] - $startRGB[0]) / $steps,
-            ($endRGB[1] - $startRGB[1]) / $steps,
-            ($endRGB[2] - $startRGB[2]) / $steps,
+                ($endRGB[0] - $startRGB[0]) / $steps,
+                ($endRGB[1] - $startRGB[1]) / $steps,
+                ($endRGB[2] - $startRGB[2]) / $steps,
             ];
 
             $intermediateColors = [];
 
             for ($i = 0; $i <= $steps; $i++) {
-            $intermediateRGB = [
-            round($startRGB[0] + $i * $stepRGB[0]),
-            round($startRGB[1] + $i * $stepRGB[1]),
-            round($startRGB[2] + $i * $stepRGB[2]),
-            ];
+                $intermediateRGB = [
+                    round($startRGB[0] + $i * $stepRGB[0]),
+                    round($startRGB[1] + $i * $stepRGB[1]),
+                    round($startRGB[2] + $i * $stepRGB[2]),
+                ];
 
-            $intermediateColors[] = sprintf("#%02x%02x%02x", $intermediateRGB[0], $intermediateRGB[1], $intermediateRGB[2]);
+                $intermediateColors[] = sprintf("#%02x%02x%02x", $intermediateRGB[0], $intermediateRGB[1], $intermediateRGB[2]);
             }
 
             return $intermediateColors;
         }
 
         // Usage
-        $startColor = "#000000";
-        $endColor = "#AA0000";
+        $startColor = config('open-graphy.template_settings.stripes.start_color');
+        $endColor = config('open-graphy.template_settings.stripes.end_color');
         $steps = 5;
 
         $colors = generateIntermediateColors($startColor, $endColor, $steps);
