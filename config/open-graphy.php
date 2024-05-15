@@ -33,6 +33,11 @@ return [
     'template' => 'weavy',
 
     'template_settings' => [
+        'strings' => [
+            'background' => '#5e009e',
+            'stroke_color' => '#9f6eee',
+            'stroke_width' => '3',
+        ],
         'weavy' => [
             'background' => '#5e009e',
         ],
