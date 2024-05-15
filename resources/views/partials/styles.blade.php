@@ -79,7 +79,7 @@
         align-items: center;
         @endif
 
-width: 50%;
+        width: 50%;
         display: flex;
         padding: 15px;
         /*padding-bottom: 15px;*/
