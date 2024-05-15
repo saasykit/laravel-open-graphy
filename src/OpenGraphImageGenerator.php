@@ -47,7 +47,7 @@ class OpenGraphImageGenerator
             //        ]
         )->render(), config('open-graphy.render_timeout'));
 
-        return $page->screenshot()->getBase64();
+        return base64_decode($page->screenshot()->getBase64());
     }
 
     /**
