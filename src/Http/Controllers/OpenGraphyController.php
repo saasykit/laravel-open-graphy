@@ -31,7 +31,7 @@ class OpenGraphyController
         $screenshot = $request->boolean('screenshot', config('open-graphy.screenshot.enabled'));
         $template = $request->get('template', config('open-graphy.template'));
 
-        $fileExtension = config('open-graphy.image.extension');
+        $fileExtension = config('open-graphy.image.type');
 
         // hash all the inputs to create a unique filename
         $filename = md5($title.$logo.$screenshot.$url.$template);
