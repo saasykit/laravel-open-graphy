@@ -34,7 +34,13 @@ return [
 
     'template_settings' => [
         'weavy' => [
-
+            'background' => '#5e009e',
+        ],
+        'nodes' => [
+            'background' => '#5e009e',
+        ],
+        'default' => [
+            'background' => '#5e009e',
         ],
     ],
 ];
