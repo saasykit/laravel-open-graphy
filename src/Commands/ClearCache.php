@@ -15,9 +15,9 @@ class ClearCache extends Command
     {
         $this->info('Clearing cached open graphy images...');
 
-        $storageDisk = Storage::disk(config('open-graph-image.storage.disk'));
+        $storageDisk = Storage::disk(config('open-graphy.storage.disk'));
 
-        $storageDisk->deleteDirectory(config('open-graph-image.storage.path'));
+        $storageDisk->deleteDirectory(config('open-graphy.storage.path'));
 
         $this->comment('All done');
 

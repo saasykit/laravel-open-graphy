@@ -23,17 +23,10 @@ You can install the package via composer:
 composer require saasykit/laravel-open-graphy
 ```
 
-You can publish and run the migrations with:
-
-```bash
-php artisan vendor:publish --tag="laravel-open-graphy-migrations"
-php artisan migrate
-```
-
 You can publish the config file with:
 
 ```bash
-php artisan vendor:publish --tag="laravel-open-graphy-config"
+php artisan vendor:publish --tag="open-graphy-config"
 ```
 
 This is the contents of the published config file:
