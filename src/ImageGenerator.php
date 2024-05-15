@@ -33,7 +33,7 @@ class ImageGenerator
         ];
 
         if ($logoEnabled) {
-            $data['logo'] = $this->getInlineBase64Representation($logoImage);
+            $data['logo'] = $this->getImageRepresentation($logoImage);
         }
 
         if ($screenshotEnabled) {
@@ -44,7 +44,7 @@ class ImageGenerator
             }
         } elseif ($image) {
             $imagePath = $this->getFileLocation($image);
-            $data['image'] = $this->getInlineBase64Representation($imagePath);
+            $data['image'] = $this->getImageRepresentation($imagePath);
         }
 
         $page->setHtml(view($viewName, $data
@@ -94,9 +94,14 @@ class ImageGenerator
         return public_path($path);
     }
 
-    private function getInlineBase64Representation(string $path): ?string
+    private function getImageRepresentation(string $path): ?string
     {
         try {
+            // if $path starts with http or https, return as is
+            if (str_starts_with($path, 'http://') || str_starts_with($path, 'https://')) {
+                return $path;
+            }
+
             $mimeType = mime_content_type($path);
 
             return 'data:'.$mimeType.';base64, '.base64_encode(file_get_contents($path));
