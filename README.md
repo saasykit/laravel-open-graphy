@@ -36,10 +36,10 @@ sudo apt-get install -y chromium-browser
 
 **MacOS**:
 ```bash
-brew install chromium
+brew install --cask google-chrome
 ```
 
-You might also use `chrome` instead of `chromium` if you have it installed on your machine. In this case you will need to set the `CHROME_BINARY` environment variable to `chrome` in your `.env` file (or set it to null to allow auto discovery of the binary). See [Configuration options](#configuration-options) for more details.
+Based on the browser you installed, you can set the `chrome_binary` in the configs to `chrome` or `chromium`. You can also leave it set as null to allow auto discovery of the binary. See [Configuration options](#configuration-options) for more details.
 
 **Laravel Sail using MacOS (Apple Silicon)**:
 I found the following steps to work for me on my M1 Macbook Pro:
