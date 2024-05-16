@@ -248,7 +248,6 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 - [Ahmad Mas](https://github.com/saasykit)
 - https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/ for the patterns.
-- 
 
 ## License
 
