@@ -13,7 +13,7 @@ class OpenGraphy
         }
 
         $parameters = collect($parameters)
-            ->merge(['.'.config('open-graphy.image.type')]) // image extension is needed for twitter compatibility
+            ->merge(['.'.config('open-graphy.open_graph_image.type')]) // image extension is needed for twitter compatibility
             ->all();
 
         return url()->signedRoute('open-graphy.get', $parameters);
