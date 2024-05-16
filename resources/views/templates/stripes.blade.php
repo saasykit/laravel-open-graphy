@@ -54,6 +54,7 @@
 
         $colors = generateIntermediateColors($startColor, $endColor, $steps);
 
+        $textColor = config('open-graphy.template_settings.stripes.text_color');
 
         $svg = <<<SVG
     <svg xmlns='http://www.w3.org/2000/svg' width='100%' height='100%' viewBox='0 0 1600 800'><rect fill='{$colors[0]}' width='1600' height='800'/><g ><polygon fill='{$colors[1]}' points='1600 160 0 460 0 350 1600 50'/><polygon fill='{$colors[2]}' points='1600 260 0 560 0 450 1600 150'/><polygon fill='{$colors[3]}' points='1600 360 0 660 0 550 1600 250'/><polygon fill='{$colors[4]}' points='1600 460 0 760 0 650 1600 350'/><polygon fill='{$colors[5]}' points='1600 800 0 800 0 750 1600 450'/></g></svg>
@@ -68,6 +69,10 @@ SVG;
             background-image: url("data:image/svg+xml,{{ rawurlencode($svg) }}");
             background-attachment: fixed;
             background-size: cover;
+        }
+
+        .headline {
+            color: {{ $textColor }};
         }
     </style>
 
