@@ -51,7 +51,7 @@ apt update
 apt install chromium
 ```
 
-Once done, You can install the package via composer:
+2. Once done, You can install the package via composer:
 
 ```bash
 composer require saasykit/laravel-open-graphy
@@ -202,7 +202,7 @@ You can also add a screenshot of the page to the open graph image. This is usefu
 
 <p align="center">
     <a href="https://saasykit.com" target="_blank">
-    <img height="350" style="" src="documentation/images/screenshot-example-saasykit.png">
+    <img height="350" style="border-radius: 15px" src="documentation/images/screenshot-example-saasykit.png">
     </a>
 </p>
 
@@ -234,7 +234,7 @@ You can use the following pattern library if you're looking for cool ones: https
 
 ## psst: Wanna build a SaaS application quickly?
 
-If you want to build a SaaS app quickly, check out [SaaSykit](https://saasykit.com). It's a SaaS starter kit (boilerplate) that comes packed with all components required to run a modern SaaS software.
+If you want to build a SaaS app quickly, support us by checking out [SaaSykit](https://saasykit.com). It's a SaaS starter kit (boilerplate) that comes packed with all components required to run a modern SaaS software.
 
 ## Contributing
 
