@@ -28,8 +28,8 @@
     /*Custom*/
 
     body {
-        width: 1200px;
-        height: 630px;
+        width: {{ config('open_graph_image.width') }}px;
+        height: {{ config('open_graph_image.height') }}px;
         color: white;
         display: flex;
         justify-content: center;
