@@ -30,22 +30,36 @@ return [
         'path' => 'open-graphy',
     ],
 
-    'template' => 'weavy',
+    'template' => 'verticals',
 
     'template_settings' => [
         'strings' => [
             'background' => '#5e009e',
             'stroke_color' => '#9f6eee',
-            'stroke_width' => '3',
+            'stroke_width' => '2',
+            'text_color' => '#ffffff',
         ],
-        'weavy' => [
-            'background' => '#5e009e',
+        'stripes' => [
+            'start_color' => '#5e009e',
+            'end_color' => '#9f6eee',
+            'text_color' => '#ffffff',
+        ],
+        'sunny' => [
+            'start_color' => '#5e009e',
+            'end_color' => '#9f6eee',
+            'text_color' => '#ffffff',
+        ],
+        'verticals' => [
+            'start_color' => '#FFFFFF',
+            'mid_color' => '#F5F5F5',
+            'end_color' => '#CCCCCC',
+            'text_color' => '#5B4242',
         ],
         'nodes' => [
-            'background' => '#5e009e',
-        ],
-        'default' => [
-            'background' => '#5e009e',
+            'background' => '#330033',
+            'node_color' => '#550055',
+            'edge_color' => '#440044',
+            'text_color' => '#ffffff',
         ],
     ],
 ];

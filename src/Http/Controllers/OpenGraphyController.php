@@ -30,8 +30,8 @@ class OpenGraphyController
         }
 
         $request->mergeIfMissing([
-            'title' => 'SaaSykit Open Graphy is Awesome! 🚀',
-            'url' => 'https://open-graphy.com',
+            'title' => 'SaaSykit Open Graphy is Awesome!',
+            'url' => 'https://saasykit.com',
             'logo' => false,
             'screenshot' => false,
             'template' => 'stripes',
