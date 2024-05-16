@@ -20,6 +20,28 @@ class OpenGraphyController
             abort(403);
         }
 
+        return $this->processRequest($request);
+    }
+
+    public function test(Request $request)
+    {
+        if (! app()->environment('local')) {
+            abort(404);
+        }
+
+        $request->mergeIfMissing([
+            'title' => 'SaaSykit Open Graphy is Awesome! 🚀',
+            'url' => 'https://open-graphy.com',
+            'logo' => false,
+            'screenshot' => false,
+            'template' => 'stripes',
+        ]);
+
+        return $this->processRequest($request, true);
+    }
+
+    private function processRequest(Request $request, bool $isTest = false)
+    {
         $title = $request->get('title');
         $url = $request->get('url');
 
@@ -47,7 +69,7 @@ class OpenGraphyController
 
         $filePath = $path.'/'.$filename.'.'.$fileExtension;
 
-        if (! Storage::disk($disk)->exists($filePath)) {
+        if (! Storage::disk($disk)->exists($filePath) || $isTest) {
             $screenshot = $this->imageGenerator->render($title, $url, $logo, $screenshot, $image, $template);
 
             Storage::disk($disk)->put($filePath, $screenshot);
