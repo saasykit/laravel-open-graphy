@@ -27,7 +27,7 @@ With Open Graphy, you can generate social cards for your website dynamically. Yo
 
 ## Installation
 
-1. You need to install the `chromium` or `chrome` browser on your server as it's being used by Open Graphy to render images. You can install it using the following command:
+1. You need to install the `chromium` or `chrome` browser on your server as it's being used by Open Graphy to render images. 
 
 **Ubuntu/Debian**:
 ```bash
@@ -38,8 +38,6 @@ sudo apt-get install -y chromium-browser
 ```bash
 brew install --cask google-chrome
 ```
-
-Based on the browser you installed, you can set the `chrome_binary` in the configs to `chrome` or `chromium`. You can also leave it set as null to allow auto discovery of the binary. See [Configuration options](#configuration-options) for more details.
 
 **Laravel Sail using MacOS (Apple Silicon)**:
 I found the following steps to work for me on my M1 Macbook Pro:
@@ -70,7 +68,7 @@ This is the contents of the published config file:
 
 // config for SaaSykit/OpenGraphy
 return [
-    'chrome_binary' => env('CHROME_BINARY', 'chromium'), // leave empty for set to the path of the chrome binary to use, or "chromium" to use the chromium binary
+    'chrome_binary' => null, // leave empty for autodiscovery, or set it to 'chrome' or 'chromium' depending on the binary you want to use. You can also provide full path to the binary
     'open_graph_image' => [  // final generated open graph image settings
         'width' => 1200,
         'height' => 630,
@@ -136,7 +134,7 @@ return [
 
 **Configuration options:**
 
-- `chrome_binary`: The path to the chrome binary to use. Leave empty to auto-discover the binary, or set to `chrome` or `chromium` to use the respective binary.
+- `chrome_binary`: Based on the browser you installed, you can set the `chrome_binary` to either `chrome` or `chromium`. You can also leave it set as null to allow auto discovery of the binary. You can also provide the full path to the binary.
 - `open_graph_image`: The settings for the final generated open graph image.
 - `image`: The path (relative to the public directory) or URL to the image to be added to the open graph image.
 - `logo`: The settings for the logo to be added to the open graph image.
@@ -163,7 +161,7 @@ All what you need to do is to call the following component in your `<head>` tag 
 <x-open-graphy::links title="This is an awesome title"/>
 ```
 
-**Parameters:**
+This component accepts the following parameters:
 - `title`: The title to be displayed on the open graph image. (required)
 - `image`: The image (path from public directory or a URL) to be displayed on the open graph image. (optional)
 - `template`: The template to use for the open graph image. You can choose from `background`, `stripes`, `sunny`, `verticals`, `nodes` (optional).
@@ -171,8 +169,7 @@ All what you need to do is to call the following component in your `<head>` tag 
 - `logo`: Set to `true` to add a logo to the open graph image, will override the `logo.enabled` setting in the config file. (optional)
 
 
-
-This will generate the following meta tags in your HTML:
+Calling the `x-open-graphy::links` component will generate the following meta tags in your HTML:
 
 ```html
 <meta property="og:image" content="{URL}">
@@ -202,7 +199,7 @@ You can also add a screenshot of the page to the open graph image. This is usefu
 
 <p align="center">
     <a href="https://saasykit.com" target="_blank">
-    <img height="350" style="border-radius: 15px" src="documentation/images/screenshot-example-saasykit.png">
+    <img max-height="350" style="border-radius: 15px; max-height: 350px" src="documentation/images/screenshot-example-saasykit.png">
     </a>
 </p>
 
