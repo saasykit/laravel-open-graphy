@@ -153,7 +153,7 @@ The configs above allow you to edit the colors and styling of the provided templ
 php artisan vendor:publish --tag="laravel-open-graphy-views"
 ```
 
-See below for creating a custom template.
+See below for [Creating a custom template](#creating-a-custom-template) for more details.
 
 ## Usage
 
@@ -195,7 +195,15 @@ It accepts the following query parameters:
 You would typically need to edit the settings in the config file to change the colors and styles of the templates, and keep testing until you find the best design for your website.
 
 ### Website Screenshots:
+
 You can also add a screenshot of the page to the open graph image. This is useful if you want to show a preview of the page in the open graph image. To enable this feature, set the `screenshot.enabled` to `true` in the config file.
+
+**Example:**
+
+<p align="center">
+<img height="350" style="" src="documentation/images/screenshot-example-saasykit.png">
+</p>
+
 
 **Important 1**: this feature works only if the page is accessible from the internet where the package is installed. What heppens is that the package will open the page in a headless browser, take a screenshot of the page and add it to the open graph image. This will **NOT work on a Laravel sail installation** unless do you do some magic.
 
