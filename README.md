@@ -1,4 +1,4 @@
-<p align="center"><img style="height: 100px"  src="/docs/open-graphy.png" alt="Logo Laravel Open Graphy"></p>
+<p align="center"><img style="height: 100px"  src="/documentation/images/open-graphy.png" alt="Logo Laravel Open Graphy"></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/saasykit/laravel-open-graphy"><img src="https://img.shields.io/packagist/v/saasykit/laravel-open-graphy.svg?style=flat-square" alt="Build Status"></a>
@@ -20,7 +20,7 @@ With Open Graphy, you can generate social cards for your website dynamically. Yo
 
 **Examples: 👇** 
 
-![open-graphy-examples.png](docs/open-graphy-examples.webp)
+![open-graphy-examples.png](documentation/images/open-graphy-examples.webp)
 
 ## Requirements
 - PHP 8.1+
