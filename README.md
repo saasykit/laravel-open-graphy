@@ -1,4 +1,4 @@
-<p align="center"><img style="height: 100px"  src="docs/open-graphy.png" alt="Logo Laravel Open Graphy"></p>
+<p align="center"><img style="height: 100px"  src="/docs/open-graphy.png" alt="Logo Laravel Open Graphy"></p>
 
 <p align="center">
 <a href="https://packagist.org/packages/saasykit/laravel-open-graphy"><img src="https://img.shields.io/packagist/v/saasykit/laravel-open-graphy.svg?style=flat-square" alt="Build Status"></a>
