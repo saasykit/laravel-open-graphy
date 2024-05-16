@@ -199,7 +199,7 @@ You can also add a screenshot of the page to the open graph image. This is usefu
 
 <p align="center">
     <a href="https://saasykit.com" target="_blank">
-    <img height="350" style="border-radius: 15px; max-height: 350px" src="documentation/images/screenshot-example-saasykit.png">
+    <img  width="80%" style="border-radius: 15px; max-height: 350px" src="documentation/images/screenshot-example-saasykit.png">
     </a>
 </p>
 
