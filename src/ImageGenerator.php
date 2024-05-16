@@ -47,13 +47,7 @@ class ImageGenerator
             $data['image'] = $this->getImageRepresentation($imagePath);
         }
 
-        $page->setHtml(view($viewName, $data
-            //            [
-            ////            'image' => $this->renderPage('https://www.smashingmagazine.com/2021/10/object-fit-background-size-css/'),
-            ////                        'image' => 'https://unsplash.com/photos/_PaXoN4_2s0/download?ixid=M3wxMjA3fDB8MXxzZWFyY2h8M3x8bGVtb25hZGUlMjBzdGFuZHxlbnwwfHx8fDE3MTU0MzAyOTB8MA&force=true&w=1920',
-            //            'logo' => 'data:'.$logoMimeType.';base64,'.base64_encode(file_get_contents($logoImageContent)),
-            //        ]
-        )->render(), config('open-graphy.render_timeout'));
+        $page->setHtml(view($viewName, $data)->render(), config('open-graphy.render_timeout'));
 
         return base64_decode($page->screenshot()->getBase64());
     }

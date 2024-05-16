@@ -19,7 +19,7 @@ class ClearCache extends Command
 
         $storageDisk->deleteDirectory(config('open-graphy.storage.path'));
 
-        $this->comment('All done');
+        $this->comment('Done');
 
         return self::SUCCESS;
     }
