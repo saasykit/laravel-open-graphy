@@ -201,7 +201,9 @@ You can also add a screenshot of the page to the open graph image. This is usefu
 **Example:**
 
 <p align="center">
-<img height="350" style="" src="documentation/images/screenshot-example-saasykit.png">
+    <a href="https://saasykit.com" target="_blank">
+    <img height="350" style="" src="documentation/images/screenshot-example-saasykit.png">
+    </a>
 </p>
 
 
