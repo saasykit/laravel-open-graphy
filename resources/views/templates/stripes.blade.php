@@ -65,7 +65,7 @@ SVG;
 
     <style>
         body {
-            background-color: {{ config('open-graphy.template_settings.sunny.color1') }};
+            background-color: {{ $startColor }};
             background-image: url("data:image/svg+xml,{{ rawurlencode($svg) }}");
             background-attachment: fixed;
             background-size: cover;
