@@ -2,7 +2,7 @@
 
 // config for SaaSykit/OpenGraphy
 return [
-    'chrome_binary' => env('CHROME_BINARY', 'chromium'), // leave empty for set to the path of the chrome binary to use, or "chromium" to use the chromium binary
+    'chrome_binary' => env('CHROME_BINARY'), // leave empty for set to the path of the chrome binary to use, or 'chromium' to use the chromium binary
     'open_graph_image' => [  // final generated open graph image settings
         'width' => 1200,
         'height' => 630,

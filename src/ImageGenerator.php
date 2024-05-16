@@ -16,7 +16,7 @@ class ImageGenerator
     ) {
         $imageHeight = config('open-graphy.open_graph_image.height');
         $imageWidth = config('open-graphy.open_graph_image.width');
-        $browser = (new BrowserFactory('chromium'))->createBrowser([
+        $browser = (new BrowserFactory(config('open-graphy.chrome_binary')))->createBrowser([
             'windowSize' => [$imageWidth, $imageHeight],
         ]);
 
@@ -63,7 +63,7 @@ class ImageGenerator
         $browserWidth = config('open-graphy.screenshot.render_width');
 
         try {
-            $browser = (new BrowserFactory('chromium'))->createBrowser([
+            $browser = (new BrowserFactory(config('open-graphy.chrome_binary')))->createBrowser([
                 'windowSize' => [$browserWidth, $browserHeight],
             ]);
 
