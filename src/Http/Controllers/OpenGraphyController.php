@@ -31,7 +31,7 @@ class OpenGraphyController
 
         $request->mergeIfMissing([
             'title' => 'Laravel Open Graphy is Awesome!',
-            'url' => 'https://saasykit.com',
+            'url' => url('/'),
             'template' => 'stripes',
         ]);
 
