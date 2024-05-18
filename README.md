@@ -148,7 +148,7 @@ return [
 The configs above allow you to edit the colors and styling of the provided templates, but if you prefer to go god mode and edit styles or introduce new templates, you can publish the views using the following command:
 
 ```bash
-php artisan vendor:publish --tag="laravel-open-graphy-views"
+php artisan vendor:publish --tag="open-graphy-views"
 ```
 
 See below for [Creating a custom template](#creating-a-custom-template) for more details.
@@ -198,15 +198,15 @@ You can also add a screenshot of the page to the open graph image. This is usefu
 **Example:**
 
 <p align="center">
-    <a href="https://saasykit.com" target="_blank">
+    <a href="https://saasykit.com?ref=opengraphy" target="_blank">
     <img  width="80%" style="border-radius: 15px; max-height: 350px" src="documentation/images/screenshot-example-saasykit.png">
     </a>
 </p>
 
 
-**Important 1**: this feature works only if the page is accessible from the internet where the package is installed. What heppens is that the package will open the page in a headless browser, take a screenshot of the page and add it to the open graph image. This will **NOT work on a Laravel sail installation** unless do you do some magic.
+**Important 1**: this feature works only if the page is accessible from the internet where the package is installed. What happens is that the package will open the page in a headless browser, take a screenshot of the page and add it to the open graph image. This will **NOT work on a Laravel sail installation** unless do you do some magic.
 
-**Important 2**: most of the time screenshotting works fine, but sometimes longer pages or ones that have more heaving effects will timout. You can increase the `render_timeout` in the config file to allow more time for the screenshot to render, but Open Graphy will fail gracefully if the screenshot count not be taken, and will still generate the open graph image without the screenshot.
+**Important 2**: most of the time screenshotting works fine, but sometimes longer pages or ones that have more heavy effects will timout. You can increase the `render_timeout` in the config file to allow more time for the screenshot to render, but Open Graphy will fail gracefully if the screenshot could not be taken, and will still generate the open graph image without the screenshot.
 
 ### Clearing the cache:
 You can clear the cache of the generated images using the following command:
@@ -220,7 +220,7 @@ php artisan open-graphy:clear
 To create a custom template, you need to publish the views (if you haven't already) using the following command:
 
 ```bash
-php artisan vendor:publish --tag="laravel-open-graphy-views"
+php artisan vendor:publish --tag="open-graphy-views"
 ```
 
 Now you can create a new blade file in the `resources/views/vendor/open-graphy/templates` directory. The file should contain the HTML and CSS for the template. You can get some inspiration from the existing templates in the package.
@@ -231,7 +231,7 @@ You can use the following pattern library if you're looking for cool ones: https
 
 ## psst: Wanna build a SaaS application quickly?
 
-If you want to build a SaaS app quickly, support us by checking out [SaaSykit](https://saasykit.com). It's a SaaS starter kit (boilerplate) that comes packed with all components required to run a modern SaaS software.
+If you want to build a SaaS app quickly, support us by checking out [SaaSykit](https://saasykit.com?ref=opengraphy). It's a SaaS starter kit (boilerplate) that comes packed with all components required to run a modern SaaS software.
 
 ## Contributing
 
@@ -243,7 +243,7 @@ Please review [our security policy](../../security/policy) on how to report secu
 
 ## Credits
 
-- [Ahmad Mas](https://github.com/saasykit)
+- [Ahmad Mas](https://github.com/aswilam)
 - https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/ for the patterns.
 
 ## License
