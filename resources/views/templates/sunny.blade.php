@@ -48,7 +48,7 @@ SVG;
 <body>
     <div class="top-container">
         @php($imageIsSet = isset($image) && !empty($image))
-        <div class="headline-container {{!$imageIsSet? 'full-width' : ''}}">
+        <div class="headline-container {{isset($logo) ? 'flex-column' : 'flex-row'}} {{!$imageIsSet? 'full-width' : ''}}">
             @if (isset($logo))
                 <img class="logo" src="{{ $logo }}" alt="Logo">
             @endif

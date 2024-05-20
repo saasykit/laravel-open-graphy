@@ -52,19 +52,21 @@
     }
 
     .headline-container {
-        @if(isset($logo))
-            flex-direction: column;
-            justify-items: center;
-            gap: 20px;
-        @else
-        flex-direction: row;
-        justify-items: center;
-        align-items: center;
-        @endif
-
         width: 50%;
         display: flex;
         padding: 15px;
+    }
+
+    .flex-column {
+        flex-direction: column;
+        justify-items: center;
+        gap: 20px;
+    }
+
+    .flex-row {
+        flex-direction: row;
+        justify-items: center;
+        align-items: center;
     }
 
     .headline-container.full-width {
