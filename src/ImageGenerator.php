@@ -14,6 +14,7 @@ class ImageGenerator
         ?string $image,
         string $template,
         array $templateSettings = [],
+        string $logoUrl = null
     ) {
         $imageHeight = config('open-graphy.open_graph_image.height');
         $imageWidth = config('open-graphy.open_graph_image.width');
@@ -23,7 +24,9 @@ class ImageGenerator
 
         $page = $browser->createPage();
 
-        $logoImage = $this->getFileLocation(config('open-graphy.logo.location'));
+        $logoUrl = $logoUrl ?? config('open-graphy.logo.url');
+
+        $logoImage = $this->getFileLocation($logoUrl);
 
         $viewName = 'open-graphy::templates.'.$template;
         $templateSettings = empty($templateSettings) ? config('open-graphy.template_settings.'.$template, []) : $templateSettings;
