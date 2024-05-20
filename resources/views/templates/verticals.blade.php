@@ -10,11 +10,11 @@
 
     @php
         // Usage
-        $startColor = config('open-graphy.template_settings.verticals.start_color');
-        $midColor = config('open-graphy.template_settings.verticals.mid_color');
-        $endColor = config('open-graphy.template_settings.verticals.end_color');
+        $startColor = $templateSettings['start_color'];
+        $midColor = $templateSettings['mid_color'];
+        $endColor = $templateSettings['end_color'];
 
-        $textColor = config('open-graphy.template_settings.verticals.text_color');
+        $textColor = $templateSettings['text_color'];
 
         $svg = <<<SVG
     <svg xmlns='http://www.w3.org/2000/svg' width='100' height='100' viewBox='0 0 100 100'><rect fill='{$startColor}' width='100' height='100'/><g stroke='{$endColor}' stroke-width='0' ><rect fill='{$midColor}' x='-60' y='-60' width='110' height='240'/></g></svg>

@@ -13,7 +13,7 @@ class ImageGenerator
         bool $screenshotEnabled,
         ?string $image,
         string $template,
-        $templateSettings = [],
+        array $templateSettings = [],
     ) {
         $imageHeight = config('open-graphy.open_graph_image.height');
         $imageWidth = config('open-graphy.open_graph_image.width');
