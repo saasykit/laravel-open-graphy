@@ -26,8 +26,6 @@ class ImageGenerator
 
         $logoUrl = $logoUrl ?? config('open-graphy.logo.url');
 
-        $logoImage = $this->getFileLocation($logoUrl);
-
         $viewName = 'open-graphy::templates.'.$template;
         $templateSettings = empty($templateSettings) ? config('open-graphy.template_settings.'.$template, []) : $templateSettings;
 
@@ -37,6 +35,7 @@ class ImageGenerator
         ];
 
         if ($logoEnabled) {
+            $logoImage = $this->getFileLocation($logoUrl);
             $data['logo'] = $this->getImageRepresentation($logoImage);
         }
 
