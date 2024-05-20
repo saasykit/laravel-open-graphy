@@ -12,7 +12,8 @@ class ImageGenerator
         bool $logoEnabled,
         bool $screenshotEnabled,
         ?string $image,
-        string $template
+        string $template,
+        $templateSettings = [],
     ) {
         $imageHeight = config('open-graphy.open_graph_image.height');
         $imageWidth = config('open-graphy.open_graph_image.width');
@@ -25,7 +26,7 @@ class ImageGenerator
         $logoImage = $this->getFileLocation(config('open-graphy.logo.location'));
 
         $viewName = 'open-graphy::templates.'.$template;
-        $templateSettings = config('open-graphy.template_settings.'.$template, []);
+        $templateSettings = empty($templateSettings) ? config('open-graphy.template_settings.'.$template, []) : $templateSettings;
 
         $data = [
             'title' => $title,
