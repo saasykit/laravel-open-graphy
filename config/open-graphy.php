@@ -30,7 +30,7 @@ return [
         'path' => 'open-graphy',
     ],
 
-    'template' => 'verticals',
+    'template' => 'stripes',
 
     'template_settings' => [
         'strings' => [
