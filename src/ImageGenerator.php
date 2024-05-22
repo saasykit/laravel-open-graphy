@@ -24,7 +24,7 @@ class ImageGenerator
 
         $page = $browser->createPage();
 
-        $logoUrl = $logoUrl ?? config('open-graphy.logo.url');
+        $logoUrl = $logoUrl ?? config('open-graphy.logo.location');
 
         $viewName = 'open-graphy::templates.'.$template;
         $templateSettings = empty($templateSettings) ? config('open-graphy.template_settings.'.$template, []) : $templateSettings;
