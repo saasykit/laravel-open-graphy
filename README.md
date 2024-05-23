@@ -229,7 +229,7 @@ Once you have created the template, you can set the `template` key in the config
 
 You can use the following pattern library if you're looking for cool ones: https://www.svgbackgrounds.com/set/free-svg-backgrounds-and-patterns/ 
 
-## psst: Wanna build a SaaS application quickly?
+## Wanna build a Laravel SaaS application quickly?
 
 If you want to build a SaaS app quickly, support us by checking out [SaaSykit](https://saasykit.com?ref=opengraphy). It's a SaaS starter kit (boilerplate) that comes packed with all components required to run a modern SaaS software.
 
