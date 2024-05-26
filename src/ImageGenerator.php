@@ -55,6 +55,18 @@ class ImageGenerator
         return base64_decode($page->screenshot()->getBase64());
     }
 
+    public function canRender(): bool
+    {
+        try {
+            $browser = (new BrowserFactory(config('open-graphy.chrome_binary')))->createBrowser();
+            $page = $browser->createPage();
+            $page->setHtml('<html></html>');
+            return true;
+        } catch (\Throwable $e) {
+            return false;
+        }
+    }
+
     /**
      * Render a page to an image. The page should be accessible from the internet or from the local network.
      * Will usually NOT work with docker (sail) containers due to container being not aware of its hostname/port
