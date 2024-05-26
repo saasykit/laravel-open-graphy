@@ -76,6 +76,8 @@ return [
     ],
 
     'image' => null,  // path (relative to public directory) or url to the image to be added to the open graph image
+    
+    'fallback_open_graph_image' => null,  // path (relative to public directory) or url to the image to be used as a fallback if the open graph image cannot be generated
 
     'logo' => [
         'enabled' => false, // set to false to disable the logo
@@ -137,6 +139,7 @@ return [
 - `chrome_binary`: Based on the browser you installed, you can set the `chrome_binary` to either `chrome` or `chromium`. You can also leave it set as null to allow auto discovery of the binary. You can also provide the full path to the binary.
 - `open_graph_image`: The settings for the final generated open graph image.
 - `image`: The path (relative to the public directory) or URL to the image to be added to the open graph image.
+- `fallback_open_graph_image`: The path (relative to the public directory) or URL to the image to be used as a fallback if the open graph image cannot be generated.
 - `logo`: The settings for the logo to be added to the open graph image.
 - `render_timeout`: The maximum time to wait for the screenshot to render before failing.
 - `screenshot`: The settings for the screenshot to be added to the open graph image.

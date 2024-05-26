@@ -11,6 +11,8 @@ return [
 
     'image' => null,  // path (relative to public directory) or url to the image to be added into the open graph image
 
+    'fallback_open_graph_image' => null,  // path (relative to public directory) or url to the image to be used as a fallback if the open graph image cannot be generated
+
     'logo' => [
         'enabled' => false, // set to false to disable the logo
         'location' => '', // path (relative to public directory) or url to the logo to be added to the open graph image
