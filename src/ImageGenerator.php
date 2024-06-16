@@ -3,9 +3,53 @@
 namespace SaaSykit\OpenGraphy;
 
 use HeadlessChromium\BrowserFactory;
+use Illuminate\Support\Facades\Storage;
 
 class ImageGenerator
 {
+    public function generate(
+        string $title,
+        string $url,
+        bool $logo,
+        bool $screenshot,
+        ?string $image,
+        string $template,
+        bool $isTest = false
+    )
+    {
+        $fileExtension = config('open-graphy.open_graph_image.type');
+
+        // hash all the inputs to create a unique filename
+        $filename = md5($title.$logo.$screenshot.$url.$image.$template);
+
+        // storage path
+        $disk = config('open-graphy.storage.disk');
+        $path = config('open-graphy.storage.path');
+
+        if (! Storage::disk($disk)->exists($path)) {
+            Storage::disk($disk)->makeDirectory($path);
+        }
+
+        $filePath = $path.'/'.$filename.'.'.$fileExtension;
+
+        if (! Storage::disk($disk)->exists($filePath) || $isTest) {
+            $screenshot = $this->render($title, $url, $logo, $screenshot, $image, $template);
+
+            Storage::disk($disk)->put($filePath, $screenshot);
+        }
+
+        return $filePath;
+    }
+
+    public function streamFromPath(string $path)
+    {
+//        return response(Storage::disk($disk)->get($filePath), 200, [
+//            'Content-Type' => 'image/'.$fileExtension,
+//        ]);
+
+        return response()->file($path);
+    }
+
     public function render(
         string $title,
         string $url,
