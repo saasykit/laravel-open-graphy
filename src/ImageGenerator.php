@@ -14,13 +14,15 @@ class ImageGenerator
         bool $screenshot,
         ?string $image,
         string $template,
+        array $templateSettings = [],
+        string $logoUrl = null,
         bool $isTest = false
     )
     {
         $fileExtension = config('open-graphy.open_graph_image.type');
 
         // hash all the inputs to create a unique filename
-        $filename = md5($title.$logo.$screenshot.$url.$image.$template);
+        $filename = md5($title.$logo.$screenshot.$url.$image.$template.intval($isTest));
 
         // storage path
         $disk = config('open-graphy.storage.disk');
@@ -33,7 +35,7 @@ class ImageGenerator
         $filePath = $path.'/'.$filename.'.'.$fileExtension;
 
         if (! Storage::disk($disk)->exists($filePath) || $isTest) {
-            $screenshot = $this->render($title, $url, $logo, $screenshot, $image, $template);
+            $screenshot = $this->render($title, $url, $logo, $screenshot, $image, $template, $templateSettings, $logoUrl);
 
             Storage::disk($disk)->put($filePath, $screenshot);
         }
@@ -48,6 +50,11 @@ class ImageGenerator
 //        ]);
 
         return response()->file($path);
+    }
+
+    public function base64FromPath(string $path)
+    {
+        return base64_encode(Storage::disk(config('open-graphy.storage.disk'))->get($path));
     }
 
     public function render(
