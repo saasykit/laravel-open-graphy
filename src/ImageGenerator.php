@@ -13,13 +13,15 @@ class ImageGenerator
         bool $logo,
         bool $screenshot,
         ?string $image,
-        string $template,
+        ?string $template,
         array $templateSettings = [],
         string $logoUrl = null,
         bool $isTest = false
     )
     {
         $fileExtension = config('open-graphy.open_graph_image.type');
+
+        $template = $template ?? config('open-graphy.template');
 
         // hash all the inputs to create a unique filename
         $filename = md5($title.$logo.$screenshot.$url.$image.$template.intval($isTest));

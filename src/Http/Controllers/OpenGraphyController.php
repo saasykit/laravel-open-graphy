@@ -70,7 +70,7 @@ class OpenGraphyController
 
                 $filePath = trim($output);
             } else {
-                $filePath = $this->imageGenerator->generate($title, $url, $logo, $screenshot, $image, $template, $isTest);
+                $filePath = $this->imageGenerator->generate($title, $url, $logo, $screenshot, $image, $template, [], null, $isTest);
             }
 
 //            $fileExtension = config('open-graphy.open_graph_image.type');
