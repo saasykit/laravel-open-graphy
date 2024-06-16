@@ -3,7 +3,6 @@
 namespace SaaSykit\OpenGraphy\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 use SaaSykit\OpenGraphy\ImageGenerator;
 
 class OpenGraphyController
@@ -53,30 +52,9 @@ class OpenGraphyController
             $template = $request->get('template', config('open-graphy.template'));
             $image = $request->get('image');
 
-            $fileExtension = config('open-graphy.open_graph_image.type');
+            $filePath = $this->imageGenerator->generate($title, $url, $logo, $screenshot, $image, $template, [], null, $isTest);
 
-            // hash all the inputs to create a unique filename
-            $filename = md5($title.$logo.$screenshot.$url.$image.$template);
-
-            // storage path
-            $disk = config('open-graphy.storage.disk');
-            $path = config('open-graphy.storage.path');
-
-            if (! Storage::disk($disk)->exists($path)) {
-                Storage::disk($disk)->makeDirectory($path);
-            }
-
-            $filePath = $path.'/'.$filename.'.'.$fileExtension;
-
-            if (! Storage::disk($disk)->exists($filePath) || $isTest) {
-                $screenshot = $this->imageGenerator->render($title, $url, $logo, $screenshot, $image, $template);
-
-                Storage::disk($disk)->put($filePath, $screenshot);
-            }
-
-            return response(Storage::disk($disk)->get($filePath), 200, [
-                'Content-Type' => 'image/'.$fileExtension,
-            ]);
+            return $this->imageGenerator->streamFromPath($filePath);
         } catch (\Throwable $e) {
             // if fallback_open_graph_image is set, return that image
             $fallbackImage = config('open-graphy.fallback_open_graph_image');

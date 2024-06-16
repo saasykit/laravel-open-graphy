@@ -3,6 +3,7 @@
 namespace SaaSykit\OpenGraphy;
 
 use SaaSykit\OpenGraphy\Commands\ClearCache;
+use SaaSykit\OpenGraphy\Commands\GenerateOpenGraphImage;
 use Spatie\LaravelPackageTools\Commands\InstallCommand;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
@@ -21,7 +22,10 @@ class OpenGraphyServiceProvider extends PackageServiceProvider
             ->hasConfigFile()
             ->hasViews()
             ->hasRoute('web')
-            ->hasCommand(ClearCache::class)
+            ->hasCommands([
+                ClearCache::class,
+                GenerateOpenGraphImage::class,
+            ])
             ->hasInstallCommand(function (InstallCommand $command) {
                 $command
                     ->publishConfigFile()

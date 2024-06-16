@@ -3,6 +3,7 @@
 // config for SaaSykit/OpenGraphy
 return [
     'chrome_binary' => null, // leave empty for autodiscovery, or set it to 'chrome' or 'chromium' depending on the binary you want to use. You can also provide full path to the binary
+    'generate_with_command' => false, // set to true to generate the open graph image with a command instead from the controller (useful in some cases where chromium is not reachable from the web server)
     'open_graph_image' => [  // final generated open graph image settings
         'width' => 1200,
         'height' => 630,
