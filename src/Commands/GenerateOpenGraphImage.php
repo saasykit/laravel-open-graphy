@@ -7,7 +7,7 @@ use SaaSykit\OpenGraphy\ImageGenerator;
 
 class GenerateOpenGraphImage extends Command
 {
-    public $signature = 'open-graphy:generate {title} {url} {image?} {template?} {--logo} {--screenshot}  {--test}';
+    public $signature = 'open-graphy:generate {title} {url} {image?} {template?} {templateSettings?} {logoUrl?} {--logo} {--screenshot}  {--test}';
 
     public $description = 'Generate the Open Graph image';
 
@@ -23,12 +23,15 @@ class GenerateOpenGraphImage extends Command
         $url = $this->argument('url');
         $image = $this->argument('image');
         $template = $this->argument('template');
+        $templateSettings = [];  // todo: parse this
         $logo = $this->option('logo');
         $screenshot = $this->option('screenshot');
+        $logoUrl = $this->argument('logoUrl');
+
         $isTest = $this->option('test');
 
         $this->output->writeln(
-            $this->imageGenerator->generate($title, $url, $logo, $screenshot, $image, $template, $isTest)
+            $this->imageGenerator->generate($title, $url, $logo, $screenshot, $image, $template, $templateSettings, $logoUrl, $isTest)
         );
 
         return self::SUCCESS;
