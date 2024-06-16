@@ -3,11 +3,48 @@
 namespace SaaSykit\OpenGraphy;
 
 use HeadlessChromium\BrowserFactory;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
 class ImageGenerator
 {
+
     public function generate(
+        string $title,
+        string $url,
+        bool $logo,
+        bool $screenshot,
+        ?string $image,
+        ?string $template,
+        array $templateSettings = [],
+        string $logoUrl = null,
+        bool $isTest = false
+    )
+    {
+        $generateWithCommand = config('open-graphy.generate_with_command', false);
+
+        if ($generateWithCommand) {
+            Artisan::call('open-graphy:generate', [
+                'title' => $title,
+                'url' => $url,
+                'template' => $template,
+                'image' => $image,
+                'templateSettings' => json_encode($templateSettings),
+                'logoUrl' => $logoUrl,
+                '--logo' => $logo,
+                '--screenshot' => $screenshot,
+                '--test' => $isTest,
+            ]);
+
+            $output = Artisan::output();
+
+            return trim($output);
+        }
+
+        return $this->processGeneration($title, $url, $logo, $screenshot, $image, $template, $templateSettings, $logoUrl, $isTest);
+    }
+
+    public function processGeneration(
         string $title,
         string $url,
         bool $logo,

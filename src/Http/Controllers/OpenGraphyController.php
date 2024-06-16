@@ -3,7 +3,6 @@
 namespace SaaSykit\OpenGraphy\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Artisan;
 use SaaSykit\OpenGraphy\ImageGenerator;
 
 class OpenGraphyController
@@ -53,25 +52,27 @@ class OpenGraphyController
             $template = $request->get('template', config('open-graphy.template'));
             $image = $request->get('image');
 
-            $generateWithCommand = config('open-graphy.generate_with_command', false);
+            $filePath = $this->imageGenerator->generate($title, $url, $logo, $screenshot, $image, $template, [], null, $isTest);
 
-            if ($generateWithCommand) {
-                Artisan::call('open-graphy:generate', [
-                    'title' => $title,
-                    'url' => $url,
-                    'template' => $template,
-                    'image' => $image,
-                    '--logo' => $logo,
-                    '--screenshot' => $screenshot,
-                    '--test' => $isTest,
-                ]);
-
-                $output = Artisan::output();
-
-                $filePath = trim($output);
-            } else {
-                $filePath = $this->imageGenerator->generate($title, $url, $logo, $screenshot, $image, $template, [], null, $isTest);
-            }
+//            $generateWithCommand = config('open-graphy.generate_with_command', false);
+//
+//            if ($generateWithCommand) {
+//                Artisan::call('open-graphy:generate', [
+//                    'title' => $title,
+//                    'url' => $url,
+//                    'template' => $template,
+//                    'image' => $image,
+//                    '--logo' => $logo,
+//                    '--screenshot' => $screenshot,
+//                    '--test' => $isTest,
+//                ]);
+//
+//                $output = Artisan::output();
+//
+//                $filePath = trim($output);
+//            } else {
+//
+//            }
 
 //            $fileExtension = config('open-graphy.open_graph_image.type');
 //
