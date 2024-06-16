@@ -54,52 +54,7 @@ class OpenGraphyController
 
             $filePath = $this->imageGenerator->generate($title, $url, $logo, $screenshot, $image, $template, [], null, $isTest);
 
-//            $generateWithCommand = config('open-graphy.generate_with_command', false);
-//
-//            if ($generateWithCommand) {
-//                Artisan::call('open-graphy:generate', [
-//                    'title' => $title,
-//                    'url' => $url,
-//                    'template' => $template,
-//                    'image' => $image,
-//                    '--logo' => $logo,
-//                    '--screenshot' => $screenshot,
-//                    '--test' => $isTest,
-//                ]);
-//
-//                $output = Artisan::output();
-//
-//                $filePath = trim($output);
-//            } else {
-//
-//            }
-
-//            $fileExtension = config('open-graphy.open_graph_image.type');
-//
-//            // hash all the inputs to create a unique filename
-//            $filename = md5($title.$logo.$screenshot.$url.$image.$template);
-//
-//            // storage path
-//            $disk = config('open-graphy.storage.disk');
-//            $path = config('open-graphy.storage.path');
-//
-//            if (! Storage::disk($disk)->exists($path)) {
-//                Storage::disk($disk)->makeDirectory($path);
-//            }
-//
-//            $filePath = $path.'/'.$filename.'.'.$fileExtension;
-//
-//            if (! Storage::disk($disk)->exists($filePath) || $isTest) {
-//                $screenshot = $this->imageGenerator->render($title, $url, $logo, $screenshot, $image, $template);
-//
-//                Storage::disk($disk)->put($filePath, $screenshot);
-//            }
-
             return $this->imageGenerator->streamFromPath($filePath);
-
-//            return response(Storage::disk($disk)->get($filePath), 200, [
-//                'Content-Type' => 'image/'.$fileExtension,
-//            ]);
         } catch (\Throwable $e) {
             // if fallback_open_graph_image is set, return that image
             $fallbackImage = config('open-graphy.fallback_open_graph_image');
