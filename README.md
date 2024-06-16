@@ -34,6 +34,9 @@ With Open Graphy, you can generate social cards for your website dynamically. Yo
 sudo apt-get install -y chromium-browser
 ```
 
+### Note for Ubuntu ARM systems:
+Sometimes Ubuntu systems that are based on ARM might have problems with snap packages (like chromium), and because of that chromium might not work via the web server. In this case you can try setting the `generate_with_command` option to `true` in the config file. This will generate the open graph image with a command instead from the controller.
+
 **MacOS**:
 ```bash
 brew install --cask google-chrome
@@ -48,6 +51,8 @@ add-apt-repository ppa:xtradeb/apps -y
 apt update
 apt install chromium
 ```
+
+
 
 2. Once done, You can install the package via composer:
 
@@ -69,6 +74,7 @@ This is the contents of the published config file:
 // config for SaaSykit/OpenGraphy
 return [
     'chrome_binary' => null, // leave empty for autodiscovery, or set it to 'chrome' or 'chromium' depending on the binary you want to use. You can also provide full path to the binary
+    'generate_with_command' => false, // set to true to generate the open graph image with a command instead from the controller (useful in some cases where chromium is not reachable from the web server)
     'open_graph_image' => [  // final generated open graph image settings
         'width' => 1200,
         'height' => 630,
