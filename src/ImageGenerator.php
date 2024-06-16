@@ -84,11 +84,7 @@ class ImageGenerator
 
     public function streamFromPath(string $path)
     {
-//        return response(Storage::disk($disk)->get($filePath), 200, [
-//            'Content-Type' => 'image/'.$fileExtension,
-//        ]);
-
-        return response()->file($path);
+        return Storage::disk(config('open-graphy.storage.disk'))->response($path);
     }
 
     public function base64FromPath(string $path)
