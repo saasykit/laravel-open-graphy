@@ -18,7 +18,8 @@ class ImageGenerator
         ?string $template,
         array $templateSettings = [],
         string $logoUrl = null,
-        bool $isTest = false
+        bool $isTest = false,
+        bool $forceRegenerate = false
     )
     {
         $generateWithCommand = config('open-graphy.generate_with_command', false);
@@ -41,7 +42,7 @@ class ImageGenerator
             return trim($output);
         }
 
-        return $this->processGeneration($title, $url, $logo, $screenshot, $image, $template, $templateSettings, $logoUrl, $isTest);
+        return $this->processGeneration($title, $url, $logo, $screenshot, $image, $template, $templateSettings, $logoUrl, $isTest, $forceRegenerate);
     }
 
     public function processGeneration(
@@ -53,7 +54,8 @@ class ImageGenerator
         ?string $template,
         array $templateSettings = [],
         string $logoUrl = null,
-        bool $isTest = false
+        bool $isTest = false,
+        bool $forceRegenerate = false
     )
     {
         $fileExtension = config('open-graphy.open_graph_image.type');
@@ -73,7 +75,7 @@ class ImageGenerator
 
         $filePath = $path.'/'.$filename.'.'.$fileExtension;
 
-        if (! Storage::disk($disk)->exists($filePath) || $isTest) {
+        if (! Storage::disk($disk)->exists($filePath) || $isTest || $forceRegenerate) {
             $screenshot = $this->render($title, $url, $logo, $screenshot, $image, $template, $templateSettings, $logoUrl);
 
             Storage::disk($disk)->put($filePath, $screenshot);
