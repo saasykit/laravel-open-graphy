@@ -8,9 +8,29 @@ use SaaSykit\OpenGraphy\ImageGenerator;
 class OpenGraphyController
 {
     public function __construct(
-        private ImageGenerator $imageGenerator
+        private ImageGenerator $imageGenerator,
+        private ParameterEncoder $parameterEncoder,
     ) {
 
+    }
+
+    public function openGraphImageEncoded(string $base64EncodedParameters)
+    {
+        // remove the extension (e.g. .png) from the base64 encoded parameters
+        $base64EncodedParameters = substr($base64EncodedParameters, 0, strrpos($base64EncodedParameters, '.'));
+
+        $parameters = $this->parameterEncoder->base64UrlDecode($base64EncodedParameters);
+
+        $arrayParameters = [];
+        parse_str($parameters, $arrayParameters);
+
+        $request = new Request($arrayParameters);
+
+        if (! $request->hasValidSignature()) {
+            abort(403);
+        }
+
+        return $this->processRequest($request);
     }
 
     public function openGraphImage(Request $request)

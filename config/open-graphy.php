@@ -10,6 +10,8 @@ return [
         'type' => 'png',  // png or jpg
     ],
 
+    'encode_url_base64' => true,  // set to true to encode the url in base64 (better for facebook sharing)
+
     'image' => null,  // path (relative to public directory) or url to the image to be added into the open graph image
 
     'fallback_open_graph_image' => null,  // path (relative to public directory) or url to the image to be used as a fallback if the open graph image cannot be generated

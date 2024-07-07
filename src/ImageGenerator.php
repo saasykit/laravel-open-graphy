@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Storage;
 
 class ImageGenerator
 {
-
     public function generate(
         string $title,
         string $url,
@@ -17,11 +16,10 @@ class ImageGenerator
         ?string $image,
         ?string $template,
         array $templateSettings = [],
-        string $logoUrl = null,
+        ?string $logoUrl = null,
         bool $isTest = false,
         bool $forceRegenerate = false
-    )
-    {
+    ) {
         $generateWithCommand = config('open-graphy.generate_with_command', false);
 
         if ($generateWithCommand) {
@@ -53,11 +51,10 @@ class ImageGenerator
         ?string $image,
         ?string $template,
         array $templateSettings = [],
-        string $logoUrl = null,
+        ?string $logoUrl = null,
         bool $isTest = false,
         bool $forceRegenerate = false
-    )
-    {
+    ) {
         $fileExtension = config('open-graphy.open_graph_image.type');
 
         $template = $template ?? config('open-graphy.template');
@@ -102,7 +99,7 @@ class ImageGenerator
         ?string $image,
         string $template,
         array $templateSettings = [],
-        string $logoUrl = null
+        ?string $logoUrl = null
     ) {
         $imageHeight = config('open-graphy.open_graph_image.height');
         $imageWidth = config('open-graphy.open_graph_image.width');
@@ -149,6 +146,7 @@ class ImageGenerator
             $browser = (new BrowserFactory(config('open-graphy.chrome_binary')))->createBrowser();
             $page = $browser->createPage();
             $page->setHtml('<html></html>');
+
             return true;
         } catch (\Throwable $e) {
             return false;
