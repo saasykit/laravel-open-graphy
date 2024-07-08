@@ -4,6 +4,7 @@ namespace SaaSykit\OpenGraphy\Http\Controllers;
 
 use Illuminate\Http\Request;
 use SaaSykit\OpenGraphy\ImageGenerator;
+use SaaSykit\OpenGraphy\ParameterEncoder;
 
 class OpenGraphyController
 {

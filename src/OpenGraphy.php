@@ -23,8 +23,17 @@ class OpenGraphy
             ->all();
 
         if (config('open-graphy.encode_url_base64')) {
-            return url()->signedRoute('open-graphy.encoded.get', [
-                'base64EncodedParameters' => $this->parameterEncoder->base64UrlEncode(http_build_query($parameters)).'.'.config('open-graphy.open_graph_image.type'),
+
+            $url = url()->signedRoute('open-graphy.encoded.get', $parameters);
+
+            // get everything after tje ? in the url
+            $url = substr($url, strpos($url, '?') + 1);
+
+            // encode the url
+            $url = $this->parameterEncoder->base64UrlEncode($url).'.'.config('open-graphy.open_graph_image.type');
+
+            return url()->route('open-graphy.encoded.get', [
+                'base64EncodedParameters' => $url,
             ]);
         }
 
