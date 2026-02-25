@@ -17,7 +17,7 @@ class ImageGenerator
         ?string $image,
         ?string $template,
         array $templateSettings = [],
-        string $logoUrl = null,
+        ?string $logoUrl = null,
         bool $isTest = false,
         bool $forceRegenerate = false
     )
@@ -53,7 +53,7 @@ class ImageGenerator
         ?string $image,
         ?string $template,
         array $templateSettings = [],
-        string $logoUrl = null,
+        ?string $logoUrl = null,
         bool $isTest = false,
         bool $forceRegenerate = false
     )
@@ -102,7 +102,7 @@ class ImageGenerator
         ?string $image,
         string $template,
         array $templateSettings = [],
-        string $logoUrl = null
+        ?string $logoUrl = null
     ) {
         $imageHeight = config('open-graphy.open_graph_image.height');
         $imageWidth = config('open-graphy.open_graph_image.width');
